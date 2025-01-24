@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "256128597676",
+    "project_id": "pmdmrrbtarea3",
+    "storage_bucket": "pmdmrrbtarea3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256128597676:android:acb745e80d21320b982909",
+        "android_client_info": {
+          "package_name": "com.example.pmdmrrbtarea3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256128597676-5go8n6g1nlsij3a39ufbg2n90fqin2q4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pmdmrrbtarea3",
+            "certificate_hash": "f4cf3d42e5eb64ca57eb1b2c01ed92dae64cdfc0"
+          }
+        },
+        {
+          "client_id": "256128597676-r6snv87ucbha9m7clcic8f2vspvju8um.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd90UJw9N4wZPsu8xQ92Sl8b7Ct5C_ppQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256128597676-r6snv87ucbha9m7clcic8f2vspvju8um.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

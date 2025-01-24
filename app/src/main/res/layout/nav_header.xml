@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_perfil"
+    android:padding="16dp"
+    tools:ignore="MissingConstraints">
+
+    <!-- Avatar e Información del Entrenador -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Avatar -->
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/trainer_avatar"
+            android:background="@drawable/avatar_border"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/avatar_trainer" />
+
+        <!-- Información del Entrenador -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTrainerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ash_ketchum"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txtTrainerLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nivel_15"
+                android:textSize="20sp"
+                android:textColor="@android:color/white" />
+
+            <!-- Progreso hacia el próximo nivel -->
+            <ProgressBar
+                android:id="@+id/progressLevel"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:progress="50"
+                android:progressDrawable="@drawable/progress_bar_custom" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Insignias o Logros -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/medallas_obtenidas"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp" />
+
+    <!-- Insignias (reemplaza con tus propios íconos) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/medalla1"
+            android:contentDescription="@string/medalla1" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/medalla2"
+            android:contentDescription="@string/medalla2"
+            android:layout_marginStart="8dp" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/medalla3"
+            android:contentDescription="@string/medalla3"
+            android:layout_marginStart="8dp" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/medalla4"
+            android:contentDescription="@string/medalla4"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name" translatable="false">PMDMRRBTarea3</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="default_web_client_id" translatable="false">1:256128597676:android:acb745e80d21320b982909
+.com</string>
+    <string name="pokemons_salvajes">POKEMON SALVAJE</string>
+    <string name="ajustes">AJUSTES</string>
+    <string name="pokemons_capturados">POKEMON CAPTURADOS</string>
+    <string name="cerrar_sesion">CERRAR SESIÓN</string>
+    <string name="menu_home" translatable="false" />
+    <string name="menu_gallery" translatable="false" />
+    <string name="menu_slideshow" translatable="false" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="medallas_obtenidas">MEDALLAS OBTENIDAS</string>
+    <string name="medalla1">MEDALLA 1</string>
+    <string name="avatar_trainer">ENTRENADOR\n</string>
+    <string name="ash_ketchum" translatable="false">Ash Ketchum</string>
+    <string name="nivel_15">Nivel 15</string>
+    <string name="medalla3">MEDALLA 3</string>
+    <string name="medalla4">MEDALLA 4</string>
+    <string name="medalla2">MEDALLA 2</string>
+    <string name="nombre_pokemon">Nombre Pokémon</string>
+    <string name="x">x</string>
+    <string name="eliminar_pokemon">LIBERAR POKÉMON</string>
+    <string name="castellano">Español</string>
+    <string name="ingl_s">Inglés</string>
+    <string name="acerca_de">Acerca de...</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="iniciar_sesi_n">INICIAR SESIÓN</string>
+    <string name="registro_nuevo_usuario">REGISTRO NUEVO USUARIO</string>
+    <string name="pokemon_capturados">POKEMON CAPTURADOS</string>
+    <string name="pokemon_salvaje">POKEMON SALVAJE</string>
+    <string name="ajustess">ajustes</string>
+    <string name="confirmacionCerrarSesion">¿Estás seguro de que deseas cerrar sesión?</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="acercaDe">Esta aplicación fue desarrollada por Rubén Robles Berlanga.\nVersión: 1.0.0\nGracias por usar la aplicación.</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="Weight_pokemon">Peso\n</string>
+    <string name="Height_pokemon">Altura</string>
+    <string name="seleccionarIdioma">Seleccionar idioma</string>
+    <string name="sesionCancelada">Inicio de sesión cancelado.</string>
+    <string name="errorInicioSesion">Error al iniciar sesión.</string>
+    <string name="usuarioNoIdentificado">Usuario no identificado.</string>
+    <string name="errorEliminandoPokemon">Error al eliminar pokemon de la base de datos.</string>
+    <string name="errorCapturarPokemon">Error al capturar pokemon</string>
+    <string name="errorCargarPokemon">Error al cargar lista Pokemon.\n</string>
+    <string name="capturado">" capturado!"</string>
+    <string name="peso">"Peso: "</string>
+    <string name="altura">"Altura: "</string>
+    <string name="habilidades">"Habilidades: "</string>
+    <string name="tipos">"Tipo/Tipos: "</string>
+    <string name="eliminar_pok_mon">Eliminar Pokémon</string>
+    <string name="activar_para_permitir_eliminar_pok_mon">Activar para permitir liberar Pokémon</string>
+    <string name="seleccionar_idioma">Seleccionar Idioma</string>
+    <string name="cambia_el_idioma_de_la_aplicaci_n">Cambia el idioma de la aplicación</string>
+    <string name="pulsa_para_cerrar_sesi_n">Pulsa para cerrar la sesión actual</string>
+    <string name="sesion_cerrada">Se ha cerrado la sesión correctamente.</string>
+
+</resources>

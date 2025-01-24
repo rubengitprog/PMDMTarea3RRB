@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- SwitchPreferenceCompat para activar/desactivar algo -->
+    <SwitchPreferenceCompat
+        android:key="switch_delete"
+        android:title="@string/eliminar_pok_mon"
+        android:summary="@string/activar_para_permitir_eliminar_pok_mon"
+        android:defaultValue="false"
+        android:icon="@drawable/basura1"/>
+
+    <!-- ListPreference para seleccionar un idioma -->
+    <ListPreference
+        android:key="language"
+        android:title="@string/seleccionar_idioma"
+        android:summary="@string/cambia_el_idioma_de_la_aplicaci_n"
+        android:entries="@array/language_options"
+        android:icon="@drawable/idioma"
+        android:entryValues="@array/language_values"
+        android:defaultValue="es" />
+
+    <Preference
+        android:key="logout_button"
+        android:title="@string/cerrar_sesi_n"
+        android:summary="@string/pulsa_para_cerrar_sesi_n"
+        android:icon="@drawable/cerrarrr"
+       />
+</PreferenceScreen>

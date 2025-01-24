@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pokemons_salvajes">WILD POKEMON</string>
+    <string name="ajustes">SETTINGS</string>
+    <string name="pokemons_capturados">CAPTURED POKEMON</string>
+    <string name="cerrar_sesion">LOG OUT</string>
+    <string name="medallas_obtenidas">MEDALS OBTAINED</string>
+    <string name="medalla1">MEDAL 1</string>
+    <string name="avatar_trainer">COACH</string>
+    <string name="nivel_15">Level 15</string>
+    <string name="medalla3">MEDAL 3</string>
+    <string name="medalla4">MEDAL 4</string>
+    <string name="medalla2">MEDAL 2</string>
+    <string name="nombre_pokemon">Pokémon Name</string>
+    <string name="x">x</string>
+    <string name="eliminar_pokemon">RELEASE POKÉMON</string>
+
+    <string name="castellano">Spanish</string>
+    <string name="ingl_s">English</string>
+    <string name="acerca_de">About…</string>
+    <string name="cerrar_sesi_n">Sign out</string>
+    <string name="contrase_a">Password</string>
+    <string name="iniciar_sesi_n">LOGIN</string>
+    <string name="registro_nuevo_usuario">NEW USER REGISTRATION</string>
+    <string name="pokemon_capturados">CAPTURED POKEMON</string>
+    <string name="pokemon_salvaje">WILD POKEMON</string>
+    <string name="ajustess">settings</string>
+    <string name="confirmacionCerrarSesion">Are you sure you want to log out?</string>
+    <string name="si">Yes</string>
+    <string name="no">No</string>
+    <string name="acercaDe">This application was developed by Rubén Robles Berlanga. Version: 1.0.0 Thank you for using the application.</string>
+    <string name="cerrar">Close</string>
+    <string name="Weight_pokemon">Weight</string>
+    <string name="Height_pokemon">Height</string>
+    <string name="seleccionarIdioma">Select language</string>
+    <string name="sesionCancelada">Login canceled.</string>
+    <string name="errorInicioSesion">Failed to log in.</string>
+    <string name="usuarioNoIdentificado">Unidentified user.</string>
+    <string name="errorEliminandoPokemon">Error deleting pokemon from database.</string>
+    <string name="errorCapturarPokemon">Error when capturing pokemon</string>
+    <string name="errorCargarPokemon">Error loading Pokemon list.</string>
+    <string name="capturado">caught!</string>
+    <string name="peso">"Weight : "</string>
+    <string name="altura">"Height "</string>
+    <string name="habilidades">"Abilities "</string>
+    <string name="tipos">Type / Types :</string>
+    <string name="eliminar_pok_mon">Delete Pokemon</string>
+    <string name="activar_para_permitir_eliminar_pok_mon">Activate to allow Pokémon to be released</string>
+    <string name="seleccionar_idioma">Select Language</string>
+    <string name="cambia_el_idioma_de_la_aplicaci_n">Change the language of the application</string>
+    <string name="pulsa_para_cerrar_sesi_n">Press to close the current session</string>
+    <string name="sesion_cerrada">Se ha cerrado la sesión correctamente.</string>
+</resources>
