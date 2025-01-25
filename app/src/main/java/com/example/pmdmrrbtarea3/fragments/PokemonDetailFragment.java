@@ -12,20 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.pmdmrrbtarea3.Language;
 import com.example.pmdmrrbtarea3.R;
 import com.example.pmdmrrbtarea3.activity.PokedexActivity;
 import com.example.pmdmrrbtarea3.pokemon.pokeapi.models.Pokemon;
+import com.example.pmdmrrbtarea3.databinding.FragmentPokemondetailBinding;  // Importa la clase de ViewBinding generada
 
 import java.util.List;
 
 public class PokemonDetailFragment extends Fragment {
 
     private static final String ARG_POKEMON = "pokemon";
+    private FragmentPokemondetailBinding binding;  // Variable de binding
 
     /**
      * Método estático para crear una nueva instancia del fragmento con el Pokémon seleccionado.
@@ -41,44 +41,38 @@ public class PokemonDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_pokemondetail, container, false);
+        // Usa el ViewBinding para inflar el layout
+        binding = FragmentPokemondetailBinding.inflate(inflater, container, false);
         Language.applySavedLocale(requireContext());
+
         // Obtener el Pokémon desde los argumentos
         Pokemon pokemon = (Pokemon) getArguments().getSerializable(ARG_POKEMON);
-
-        // Referencias a las vistas del diseño
-        TextView name = view.findViewById(R.id.tvPokemonName);
-        ImageView image = view.findViewById(R.id.ivPokemonImage);
-        TextView weight = view.findViewById(R.id.tvPokemonWeight);
-        TextView height = view.findViewById(R.id.tvPokemonHeight);
-        TextView abilities = view.findViewById(R.id.tvPokemonAbilities);
-        TextView types = view.findViewById(R.id.tvPokemonTypes);
-
-        Button btnBack = view.findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> {
-            requireActivity().getSupportFragmentManager().popBackStack();
-        });
 
         // Mostrar los datos del Pokémon
         if (pokemon != null) {
             // Nombre, peso y altura
-            name.setText(pokemon.getName());
-            weight.setText(pokemon.getWeight() > 0 ? getString(R.string.peso) + pokemon.getWeight() + " kg" : "Peso: N/A");
-            height.setText(pokemon.getHeight() > 0 ? getString(R.string.altura) + pokemon.getHeight() + " m" : "Altura: N/A");
+            binding.tvPokemonName.setText(pokemon.getName());
+            binding.tvPokemonWeight.setText(pokemon.getWeight() > 0 ? getString(R.string.peso) + pokemon.getWeight() + " kg" : "Peso: N/A");
+            binding.tvPokemonHeight.setText(pokemon.getHeight() > 0 ? getString(R.string.altura) + pokemon.getHeight() + " m" : "Altura: N/A");
 
             // Habilidades
-            abilities.setText(formatList(getString(R.string.habilidades), pokemon.getAbilities()));
+            binding.tvPokemonAbilities.setText(formatList(getString(R.string.habilidades), pokemon.getAbilities()));
 
             // Tipos
-            types.setText(formatList(getString(R.string.tipos), pokemon.getTypes()));
+            binding.tvPokemonTypes.setText(formatList(getString(R.string.tipos), pokemon.getTypes()));
 
             // Imagen del Pokémon
             Glide.with(requireContext())
                     .load(getPokemonImageUrl(pokemon.getUrl()))
-                    .into(image);
+                    .into(binding.ivPokemonImage);
         }
 
-        return view;
+        // Configura el botón volver
+        binding.btnBack.setOnClickListener(v -> {
+            requireActivity().getSupportFragmentManager().popBackStack();
+        });
+
+        return binding.getRoot();  // Devuelve la vista raíz del binding
     }
 
     /**
@@ -108,6 +102,9 @@ public class PokemonDetailFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
+        // Limpiar el binding para evitar fugas de memoria
+        binding = null;
 
         if (getActivity() instanceof PokedexActivity) {
             PokedexActivity activity = (PokedexActivity) getActivity();
