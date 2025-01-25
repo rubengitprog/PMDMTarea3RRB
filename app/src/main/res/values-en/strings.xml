@@ -43,11 +43,20 @@
     <string name="peso">"Weight : "</string>
     <string name="altura">"Height "</string>
     <string name="habilidades">"Abilities "</string>
-    <string name="tipos">Type / Types :</string>
+    <string name="tipos">Type / Types</string>
     <string name="eliminar_pok_mon">Delete Pokemon</string>
     <string name="activar_para_permitir_eliminar_pok_mon">Activate to allow Pokémon to be released</string>
     <string name="seleccionar_idioma">Select Language</string>
     <string name="cambia_el_idioma_de_la_aplicaci_n">Change the language of the application</string>
     <string name="pulsa_para_cerrar_sesi_n">Press to close the current session</string>
     <string name="sesion_cerrada">Se ha cerrado la sesión correctamente.</string>
+    <string name="liberado">released</string>
+    <string name="confirmaci_n">Confirmation</string>
+    <string name="est_s_seguro_de_que_quieres_liberar_a">Are you sure you want to release:</string>
+    <string name="liberar">Release</string>
+    <string name="cancelar">Cancel</string>
+    <string name="error_al_obtener_detalles_del_pok_mon">Error getting Pokémon details.</string>
+    <string name="error_al_capturar_el_pok_mon">Error catching Pokémon.</string>
+    <string name="usuario_no_autenticado">User not authenticated.</string>
+    <string name="volver">BACK</string>
 </resources>

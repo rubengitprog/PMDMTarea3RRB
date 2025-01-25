@@ -1,16 +1,58 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Define los colores principales de Pokémon -->
+    <color name="pokemon_red">#FF0000</color> <!-- Rojo Pokémon -->
+    <color name="pokemon_blue">#3B4CCA</color> <!-- Azul Pokémon -->
+    <color name="pokemon_yellow">#FFDE00</color> <!-- Amarillo Pokémon -->
+    <color name="pokemon_white">#FFFFFF</color> <!-- Blanco para contraste -->
+    <color name="pokemon_black">#000000</color> <!-- Negro para contraste -->
+    <color name="pokemon_dark_background">#121212</color> <!-- Fondo oscuro -->
+    <color name="pokemon_dark_text">#E0E0E0</color> <!-- Texto claro para tema oscuro -->
+    <color name="pokemon_dark_secondary">#303030</color> <!-- Fondo secundario oscuro -->
+
+    <!-- Base application theme -->
     <style name="Theme.PMDMRRBTarea3" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/pokemon_red</item>
+        <item name="colorPrimaryVariant">@color/pokemon_blue</item>
+        <item name="colorOnPrimary">@color/pokemon_white</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splashimage</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/pokemon_yellow</item>
+        <item name="colorSecondaryVariant">@color/pokemon_blue</item>
+        <item name="colorOnSecondary">@color/pokemon_black</item>
+
+        <!-- Background and Text Colors -->
+        <item name="android:windowBackground">@color/pokemon_dark_background</item>
+        <item name="android:textColorPrimary">@color/pokemon_dark_text</item>
+        <item name="android:textColorSecondary">@color/pokemon_dark_text</item>
+
+        <!-- Status bar color -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <!-- Customize your theme here -->
     </style>
+
+    <!-- FirebaseLoginTheme -->
+    <style name="FirebaseLoginTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Fondo personalizado -->
+        <item name="android:windowBackground">@drawable/charizlog</item>
+        <!-- Personaliza el color del texto y botones -->
+        <item name="colorPrimary">@color/pokemon_red</item>
+        <item name="colorPrimaryDark">@color/pokemon_blue</item>
+        <item name="colorAccent">@color/pokemon_yellow</item>
+        <!-- Estilo del texto -->
+        <item name="android:textColorPrimary">@color/pokemon_white</item>
+        <item name="android:textColorSecondary">@color/pokemon_dark_text</item>
+    </style>
+
+    <!-- Theme without Action Bar -->
+    <style name="Theme.PMDMRRBTarea3.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Overlays -->
+    <style name="Theme.PMDMRRBTarea3.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.PMDMRRBTarea3.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

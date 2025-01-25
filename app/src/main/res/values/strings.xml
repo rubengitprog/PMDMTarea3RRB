@@ -55,8 +55,8 @@
     <string name="capturado">" capturado!"</string>
     <string name="peso">"Peso: "</string>
     <string name="altura">"Altura: "</string>
-    <string name="habilidades">"Habilidades: "</string>
-    <string name="tipos">"Tipo/Tipos: "</string>
+    <string name="habilidades">Habilidades</string>
+    <string name="tipos">Tipo/Tipos</string>
     <string name="eliminar_pok_mon">Eliminar Pokémon</string>
     <string name="activar_para_permitir_eliminar_pok_mon">Activar para permitir liberar Pokémon</string>
     <string name="seleccionar_idioma">Seleccionar Idioma</string>
@@ -71,5 +71,6 @@
     <string name="error_al_obtener_detalles_del_pok_mon">Error al obtener detalles del Pokémon.</string>
     <string name="error_al_capturar_el_pok_mon">Error al capturar el Pokémon.</string>
     <string name="usuario_no_autenticado">Usuario no autenticado.</string>
+    <string name="volver">Volver</string>
 
 </resources>
