@@ -18,6 +18,7 @@ public class Language {
         String savedLanguage = preferences.getString("selected_language", Locale.getDefault().getLanguage());
         setLocale(context, savedLanguage);
     }
+
     public static void applyLocale(Context context, String languageCode) {
         Locale locale = new Locale(languageCode);
         Locale.setDefault(locale);
@@ -27,6 +28,7 @@ public class Language {
         config.setLocale(locale);
         resources.updateConfiguration(config, resources.getDisplayMetrics());
     }
+
     public static Context updateBaseContextLocale(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
         String languageCode = preferences.getString("selected_language", Locale.getDefault().getLanguage());
@@ -36,6 +38,7 @@ public class Language {
         config.setLocale(locale);
         return context.createConfigurationContext(config);
     }
+
     public static void setLocale(Context context, String languageCode) {
         // Guardar el idioma seleccionado
         SharedPreferences preferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);

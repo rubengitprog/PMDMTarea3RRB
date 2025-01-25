@@ -64,5 +64,12 @@
     <string name="pulsa_para_cerrar_sesi_n">Pulsa para cerrar la sesión actual</string>
     <string name="sesion_cerrada">Se ha cerrado la sesión correctamente.</string>
     <string name="liberado">liberado</string>
+    <string name="confirmaci_n">Confirmación</string>
+    <string name="est_s_seguro_de_que_quieres_liberar_a">"¿Estás seguro de que quieres liberar a "</string>
+    <string name="liberar">Liberar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="error_al_obtener_detalles_del_pok_mon">Error al obtener detalles del Pokémon.</string>
+    <string name="error_al_capturar_el_pok_mon">Error al capturar el Pokémon.</string>
+    <string name="usuario_no_autenticado">Usuario no autenticado.</string>
 
 </resources>

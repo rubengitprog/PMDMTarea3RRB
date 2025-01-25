@@ -3,7 +3,6 @@ package com.example.pmdmrrbtarea3.fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,7 @@ import com.example.pmdmrrbtarea3.CapturedPokemonViewModel;
 import com.example.pmdmrrbtarea3.Language;
 import com.example.pmdmrrbtarea3.R;
 import com.example.pmdmrrbtarea3.adapter.CapturedPokemonAdapter;
-import com.example.pmdmrrbtarea3.pokemon.pokeapi.models.Pokemon;
+
 
 import java.util.ArrayList;
 
@@ -31,7 +30,8 @@ public class CapturedFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Language.applySavedLocale(requireContext()); // Asegúrate de aplicar el idioma correctamente
+        // Aplicar el idioma guardado
+        Language.applySavedLocale(requireContext());
 
         // Configurar el listener para SharedPreferences
         SharedPreferences preferences = requireContext().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
@@ -53,7 +53,7 @@ public class CapturedFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         capturedPokemonAdapter = new CapturedPokemonAdapter(getContext(), new ArrayList<>(), pokemon -> {
-            // Remover el Pokémon de la lista
+            // Quitar item Pokémon de la lista
             viewModel.getCapturedPokemons().getValue().remove(pokemon);
             capturedPokemonAdapter.notifyDataSetChanged();
         });

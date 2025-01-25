@@ -2,8 +2,6 @@ package com.example.pmdmrrbtarea3.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -43,14 +42,6 @@ public class CapturedPokemonAdapter extends RecyclerView.Adapter<CapturedPokemon
         this.isDeleteEnabled = false; // Inicializamos con el valor predeterminado
     }
 
-    // Método para actualizar el estado del Switch
-    public void setDeleteEnabled(boolean isDeleteEnabled) {
-        this.isDeleteEnabled = isDeleteEnabled;
-
-        // Usamos un Handler para que notifyDataSetChanged se ejecute fuera del ciclo de layout
-        new Handler(Looper.getMainLooper()).post(() -> notifyDataSetChanged());
-    }
-
     public void updateData(ArrayList<Pokemon> newPokemonList) {
         this.capturedPokemonList.clear();
         this.capturedPokemonList.addAll(newPokemonList);
@@ -78,10 +69,10 @@ public class CapturedPokemonAdapter extends RecyclerView.Adapter<CapturedPokemon
         boolean isDeleteEnabledFromPrefs = sharedPreferences.getBoolean("switch_delete", false);
 
         // Establecer la visibilidad del botón "Liberar" según el estado del Switch
-      //  boolean isDeleteVisible = isDeleteEnabled || isDeleteEnabledFromPrefs;
+        //  boolean isDeleteVisible = isDeleteEnabled || isDeleteEnabledFromPrefs;
 
         // Configurar visibilidad del botón
-    //    holder.itemView.findViewById(R.id.btnLiberar).setVisibility(isDeleteVisible ? View.VISIBLE : View.GONE);
+        //    holder.itemView.findViewById(R.id.btnLiberar).setVisibility(isDeleteVisible ? View.VISIBLE : View.GONE);
 
         // Capitalizar la primera letra del nombre del Pokémon
         holder.pokemonName.setText(capitalizeFirstLetter(pokemon.getName()));
@@ -105,18 +96,17 @@ public class CapturedPokemonAdapter extends RecyclerView.Adapter<CapturedPokemon
 
     private void releasePokemon(int position) {
         if (position < 0 || position >= capturedPokemonList.size()) {
-            Log.e("ReleasePokemon", "Posición inválida antes de eliminar: " + position);
             return;
         }
 
         Pokemon pokemon = capturedPokemonList.get(position);
 
         // Mostrar el cuadro de diálogo de confirmación
-        new androidx.appcompat.app.AlertDialog.Builder(context)
-                .setTitle("Confirmación")
-                .setMessage("¿Estás seguro de que quieres liberar a " + capitalizeFirstLetter(pokemon.getName()) + "?")
-                .setPositiveButton("Liberar", (dialog, which) -> liberarPokemonDesdeFirestore(position, pokemon))
-                .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
+        new AlertDialog.Builder(context)
+                .setTitle(R.string.confirmaci_n)
+                .setMessage(context.getString(R.string.est_s_seguro_de_que_quieres_liberar_a) + capitalizeFirstLetter(pokemon.getName()) + "?")
+                .setPositiveButton((context.getString(R.string.liberar)), (dialog, which) -> liberarPokemonDesdeFirestore(position, pokemon))
+                .setNegativeButton((context.getString(R.string.cancelar)), (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
     }

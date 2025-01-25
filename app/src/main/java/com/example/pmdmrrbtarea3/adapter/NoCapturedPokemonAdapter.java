@@ -44,15 +44,10 @@ public class NoCapturedPokemonAdapter extends RecyclerView.Adapter<NoCapturedPok
     private int offset = 0;  // Se empieza en 0
     private final int pageSize = 20; // Tamaño de cada página
 
-    public boolean isLoading() {
-        return isLoading;
-    }
-
     public void updatePokemons(ArrayList<Pokemon> newPokemons) {
         pokemonList = newPokemons; // Reemplaza la lista anterior
         notifyDataSetChanged();
     }
-
 
     // Interfaz para notificar a la actividad/fragmento cuando un Pokémon ha sido capturado
     public interface PokemonCaptureListener {
@@ -177,7 +172,7 @@ public class NoCapturedPokemonAdapter extends RecyclerView.Adapter<NoCapturedPok
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user == null) {
-            Toast.makeText(context, "Usuario no autenticado.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.usuario_no_autenticado, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -227,20 +222,20 @@ public class NoCapturedPokemonAdapter extends RecyclerView.Adapter<NoCapturedPok
                             .document(pokemon.getName())
                             .set(pokemonData)
                             .addOnSuccessListener(aVoid -> {
-                                ToastUtils.showCustomToast(context, capitalizeFirstLetter(pokemon.getName()) + " " +context.getString(R.string.capturado));
+                                ToastUtils.showCustomToast(context, capitalizeFirstLetter(pokemon.getName()) + " " + context.getString(R.string.capturado));
                                 if (captureListener != null) {
                                     captureListener.onPokemonCaptured(pokemon);
                                 }
                             })
                             .addOnFailureListener(e -> {
-                                Toast.makeText(context, "Error al capturar el Pokémon.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, R.string.error_al_capturar_el_pok_mon, Toast.LENGTH_SHORT).show();
                             });
                 }
             }
 
             @Override
             public void onFailure(Call<PokemonDetail> call, Throwable t) {
-                Toast.makeText(context, "Error al obtener detalles del Pokémon.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.error_al_obtener_detalles_del_pok_mon, Toast.LENGTH_SHORT).show();
             }
         });
     }
