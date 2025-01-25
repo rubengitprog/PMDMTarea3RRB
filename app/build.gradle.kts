@@ -37,8 +37,7 @@ android {
 }
 
 dependencies {
-
-        implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation(libs.volley)
     implementation(libs.preference)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")

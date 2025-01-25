@@ -63,5 +63,6 @@
     <string name="cambia_el_idioma_de_la_aplicaci_n">Cambia el idioma de la aplicación</string>
     <string name="pulsa_para_cerrar_sesi_n">Pulsa para cerrar la sesión actual</string>
     <string name="sesion_cerrada">Se ha cerrado la sesión correctamente.</string>
+    <string name="liberado">liberado</string>
 
 </resources>

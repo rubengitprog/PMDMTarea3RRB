@@ -76,8 +76,8 @@
 
             <Button
                 android:id="@+id/btnLiberar"
-                android:layout_width="48sp"
-                android:layout_height="48sp"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
                 android:text="@string/x"
                 app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

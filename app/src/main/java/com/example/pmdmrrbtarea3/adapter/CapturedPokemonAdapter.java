@@ -18,6 +18,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.example.pmdmrrbtarea3.R;
+import com.example.pmdmrrbtarea3.ToastUtils;
 import com.example.pmdmrrbtarea3.activity.PokedexActivity;
 import com.example.pmdmrrbtarea3.databinding.ItemPokemonCapturedBinding;
 import com.example.pmdmrrbtarea3.fragments.PokemonDetailFragment;
@@ -32,7 +33,7 @@ public class CapturedPokemonAdapter extends RecyclerView.Adapter<CapturedPokemon
 
     private final ArrayList<Pokemon> capturedPokemonList;
     private final Context context;
-    private PokemonReleaseListener releaseListener;
+    private final PokemonReleaseListener releaseListener;
     private boolean isDeleteEnabled;
 
     public CapturedPokemonAdapter(Context context, ArrayList<Pokemon> capturedPokemonList, PokemonReleaseListener releaseListener) {
@@ -47,9 +48,7 @@ public class CapturedPokemonAdapter extends RecyclerView.Adapter<CapturedPokemon
         this.isDeleteEnabled = isDeleteEnabled;
 
         // Usamos un Handler para que notifyDataSetChanged se ejecute fuera del ciclo de layout
-        new Handler(Looper.getMainLooper()).post(() -> {
-            notifyDataSetChanged(); // Notificar los cambios al RecyclerView
-        });
+        new Handler(Looper.getMainLooper()).post(() -> notifyDataSetChanged());
     }
 
     public void updateData(ArrayList<Pokemon> newPokemonList) {
@@ -79,8 +78,10 @@ public class CapturedPokemonAdapter extends RecyclerView.Adapter<CapturedPokemon
         boolean isDeleteEnabledFromPrefs = sharedPreferences.getBoolean("switch_delete", false);
 
         // Establecer la visibilidad del botón "Liberar" según el estado del Switch
-        boolean isDeleteVisible = isDeleteEnabled || isDeleteEnabledFromPrefs;
-        holder.itemView.findViewById(R.id.btnLiberar).setVisibility(isDeleteVisible ? View.VISIBLE : View.GONE);
+      //  boolean isDeleteVisible = isDeleteEnabled || isDeleteEnabledFromPrefs;
+
+        // Configurar visibilidad del botón
+    //    holder.itemView.findViewById(R.id.btnLiberar).setVisibility(isDeleteVisible ? View.VISIBLE : View.GONE);
 
         // Capitalizar la primera letra del nombre del Pokémon
         holder.pokemonName.setText(capitalizeFirstLetter(pokemon.getName()));
@@ -102,43 +103,65 @@ public class CapturedPokemonAdapter extends RecyclerView.Adapter<CapturedPokemon
         return capturedPokemonList.size();
     }
 
-    /**
-     * Método para liberar un Pokémon.
-     * Elimina el Pokémon de la lista local y de Firestore.
-     */
     private void releasePokemon(int position) {
-        Pokemon pokemon = capturedPokemonList.get(position);
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-            Log.e("Firestore", String.valueOf(R.string.usuarioNoIdentificado));
+        if (position < 0 || position >= capturedPokemonList.size()) {
+            Log.e("ReleasePokemon", "Posición inválida antes de eliminar: " + position);
             return;
         }
 
-        // Eliminar el Pokémon de Firestore
+        Pokemon pokemon = capturedPokemonList.get(position);
+
+        // Mostrar el cuadro de diálogo de confirmación
+        new androidx.appcompat.app.AlertDialog.Builder(context)
+                .setTitle("Confirmación")
+                .setMessage("¿Estás seguro de que quieres liberar a " + capitalizeFirstLetter(pokemon.getName()) + "?")
+                .setPositiveButton("Liberar", (dialog, which) -> liberarPokemonDesdeFirestore(position, pokemon))
+                .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
+                .create()
+                .show();
+    }
+
+    private void liberarPokemonDesdeFirestore(int position, Pokemon pokemon) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Log.e("Firestore", context.getString(R.string.usuarioNoIdentificado));
+            return;
+        }
+
         String userId = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("users")
                 .document(userId)
                 .collection("captured_pokemons")
-                .document(String.valueOf(pokemon.getId()))
+                .document(String.valueOf(pokemon.getName()))
                 .delete()
                 .addOnSuccessListener(aVoid -> {
-                    capturedPokemonList.remove(position); // Eliminar de la lista interna
+                    // Elimina el Pokémon de la lista local y actualiza el RecyclerView
+                    if (position < 0 || position >= capturedPokemonList.size()) {
+                        Log.e("ReleasePokemon", "Posición inválida después de eliminar en Firestore: " + position);
+                        return;
+                    }
+                    capturedPokemonList.remove(position);
                     notifyItemRemoved(position);
                     notifyItemRangeChanged(position, capturedPokemonList.size());
 
-                    // Notificar al listener que el Pokémon fue liberado
+                    // Muestra un Toast para confirmar la eliminación
+                    if (context instanceof PokedexActivity) {
+                        ((PokedexActivity) context).runOnUiThread(() ->
+                                ToastUtils.showCustomToast(context, capitalizeFirstLetter(pokemon.getName()) + " " + context.getString(R.string.liberado))
+                        );
+                    }
+
+                    // Llama al listener si está configurado
                     if (releaseListener != null) {
                         releaseListener.onPokemonReleased(pokemon);
                     }
                 })
-                .addOnFailureListener(e -> Log.e("Firestore", String.valueOf(R.string.errorEliminandoPokemon), e));
+                .addOnFailureListener(e -> {
+                    Log.e("Firestore", context.getString(R.string.errorEliminandoPokemon), e);
+                });
     }
 
-    /**
-     * Método para mostrar los detalles de un Pokémon.
-     */
     private void showPokemonDetail(Pokemon pokemon) {
         if (context instanceof PokedexActivity) {
             PokedexActivity activity = (PokedexActivity) context;
@@ -160,24 +183,18 @@ public class CapturedPokemonAdapter extends RecyclerView.Adapter<CapturedPokemon
         }
     }
 
-    /**
-     * Método para obtener la URL de la imagen de un Pokémon.
-     */
     private String getPokemonImageUrl(String url) {
         String[] parts = url.split("/");
         String id = parts[parts.length - 1].isEmpty() ? parts[parts.length - 2] : parts[parts.length - 1];
         return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + ".png";
     }
 
-    /**
-     * ViewHolder para el adaptador.
-     */
     public static class PokemonViewHolder extends RecyclerView.ViewHolder {
         ImageView pokemonImage;
         TextView pokemonName, pokemonWeight, pokemonHeight;
 
         public PokemonViewHolder(@NonNull ItemPokemonCapturedBinding binding) {
-            super(binding.getRoot()); // Asocia la raíz del binding con el ViewHolder
+            super(binding.getRoot());
             pokemonImage = binding.ivPokemonImage;
             pokemonName = binding.tvName;
             pokemonWeight = binding.tvWeight;
@@ -185,9 +202,6 @@ public class CapturedPokemonAdapter extends RecyclerView.Adapter<CapturedPokemon
         }
     }
 
-    /**
-     * Capitaliza la primera letra de una cadena.
-     */
     private String capitalizeFirstLetter(String input) {
         if (input == null || input.isEmpty()) {
             return input;
